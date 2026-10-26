@@ -219,7 +219,10 @@ def main():
             key = f"{ats}:{slug}"
             label = slug.split("//")[-1].split(".")[0] if ats == "workday" else slug
             try:
-                jobs = list(fetch(slug))
+                if ats == "workday" and cfg.get("workday_search_terms"):
+                    jobs = list(fetch(slug, cfg["workday_search_terms"]))
+                else:
+                    jobs = list(fetch(slug))
             except Exception as e:
                 failures.append(f"{key} ({e.__class__.__name__}: {str(e)[:80]})")
                 continue

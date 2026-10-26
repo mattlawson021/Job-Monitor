@@ -8,22 +8,36 @@ ntfy_server: https://ntfy.sh
 
 # A title must match at least ONE of these...
 title_include:
+  # Content leadership
   - 'director.{0,25}content'          # Director of Content, Director, Content Marketing
   - 'content.{0,25}director'          # Content Director, Senior Content Marketing Director
   - 'head of (content|editorial)'
   - '\bvp\b.{0,15}content|vice president.{0,20}content'
-  - 'editorial director|director.{0,15}editorial'
-  - 'content( marketing)? lead\b'
-  # Uncomment to widen the net:
-  # - 'senior content marketing manager'
-  # - 'head of growth'
-  # - 'director.{0,20}demand gen'
+  - 'editorial director|director.{0,15}editorial|managing editor|editor.in.chief'
+  - 'content( marketing)? lead\b'      # also catches Technical Content Lead
+  - 'principal.{0,20}(content|writer)'
+  - '(senior|sr\.?) content marketing manager'
+  # Thought leadership and executive communications
+  - 'thought leadership'
+  - 'executive communications'
+  - 'director.{0,20}(marketing )?communications|head of (marketing )?communications'
+  # Demand generation (your second lane)
+  - 'director.{0,20}demand gen|head of demand gen|demand gen.{0,20}director'
+  - 'director.{0,20}(growth|integrated) marketing|head of growth'
 
 # ...and must match NONE of these.
 title_exclude:
-  - '\bintern\b|coordinator|associate'
+  - '\bintern\b|coordinator|associate|specialist|assistant'
   - 'content design'                  # UX writing roles, different field
   - 'engineer|developer'
+
+# Words used to search Workday boards (Workday has no full list endpoint).
+workday_search_terms:
+  - content
+  - editorial
+  - communications
+  - thought leadership
+  - demand generation
 
 # Locations matching any of these are accepted. Everything else is skipped.
 location_allow:
@@ -31,6 +45,7 @@ location_allow:
   - 'united states|\bUSA?\b|north america'
   - 'texas|\bTX\b|dallas|fort worth|austin|houston|plano'
   - 'colorado|denver|boulder'
+  - 'canada|toronto|vancouver|montreal|ottawa|calgary|waterloo|ontario|british columbia|quebec'
   - 'europe|\bEU\b|\bEMEA\b'
   - 'united kingdom|\bUK\b|london|ireland|dublin'
   - 'netherlands|amsterdam|germany|berlin|munich|hamburg'
@@ -92,10 +107,17 @@ companies:
     - toast              # Boston, public
     - klaviyo            # Boston, public, martech
 
+    # --- Canada ---
+    - wealthsimple       # Toronto, fintech
+    - jobber             # Edmonton/Toronto (unverified)
+
   lever:
     - spotify            # Stockholm, public + profitable
+    - veeva              # (v) remote-friendly, profitable, life sciences cloud
+    - clio               # Vancouver/Toronto, legal tech (unverified)
 
-  ashby: []
+  ashby:
+    - 1password          # Toronto, remote-first (unverified)
 
   # Big, stable, high-paying employers that hire through Workday.
   # Searched for "content" and "editorial" roles. Mostly hybrid; remote director roles are rarer.
@@ -117,3 +139,12 @@ companies:
     - https://mckesson.wd3.myworkdayjobs.com/External_Careers          # (v) McKesson, Irving TX HQ
     - https://medtronic.wd1.myworkdayjobs.com/MedtronicCareers         # (v) Medtronic
     - https://alcon.wd5.myworkdayjobs.com/careers_alcon                # Alcon, Fort Worth (unverified URL)
+
+    # --- Beyond tech: insurance ---
+    - https://usaa.wd1.myworkdayjobs.com/USAAJOBSWD                    # (v) USAA, big Texas presence
+    - https://travelers.wd5.myworkdayjobs.com/External                 # Travelers (host verified, site name unverified)
+
+    # --- Canada: financial services ---
+    - https://manulife.wd3.myworkdayjobs.com/MFCJH_Jobs                # Manulife, Toronto (unverified)
+    - https://sunlife.wd3.myworkdayjobs.com/Experienced-Jobs           # Sun Life, Toronto (unverified)
+    - https://td.wd3.myworkdayjobs.com/TD_Bank_Careers                 # TD Bank, Toronto (unverified)
