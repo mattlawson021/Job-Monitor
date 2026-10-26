@@ -1,0 +1,119 @@
+# ============================================================
+# JOB MONITOR SETTINGS
+# Edit this file right in GitHub (pencil icon) any time.
+# Patterns are case-insensitive. Keep them in single quotes.
+# ============================================================
+
+ntfy_server: https://ntfy.sh
+
+# A title must match at least ONE of these...
+title_include:
+  - 'director.{0,25}content'          # Director of Content, Director, Content Marketing
+  - 'content.{0,25}director'          # Content Director, Senior Content Marketing Director
+  - 'head of (content|editorial)'
+  - '\bvp\b.{0,15}content|vice president.{0,20}content'
+  - 'editorial director|director.{0,15}editorial'
+  - 'content( marketing)? lead\b'
+  # Uncomment to widen the net:
+  # - 'senior content marketing manager'
+  # - 'head of growth'
+  # - 'director.{0,20}demand gen'
+
+# ...and must match NONE of these.
+title_exclude:
+  - '\bintern\b|coordinator|associate'
+  - 'content design'                  # UX writing roles, different field
+  - 'engineer|developer'
+
+# Locations matching any of these are accepted. Everything else is skipped.
+location_allow:
+  - '\bremote\b|anywhere'
+  - 'united states|\bUSA?\b|north america'
+  - 'texas|\bTX\b|dallas|fort worth|austin|houston|plano'
+  - 'colorado|denver|boulder'
+  - 'europe|\bEU\b|\bEMEA\b'
+  - 'united kingdom|\bUK\b|london|ireland|dublin'
+  - 'netherlands|amsterdam|germany|berlin|munich|hamburg'
+  - 'france|paris|italy|milan|rome|spain|madrid|barcelona'
+  - 'portugal|lisbon|sweden|stockholm|denmark|copenhagen'
+  - 'switzerland|zurich|austria|vienna|belgium|brussels'
+
+location_block:
+  - '.'                               # skip anything not on the allow list
+
+# ============================================================
+# COMPANIES TO WATCH
+# Criteria: technology, low churn (no repeated large layoffs), established (roughly 10+ years old or
+# public/profitable), pays at the 145K+ level for director roles,
+# and Europe-headquartered or hiring content roles in Europe.
+#
+# Find a slug: open the company careers page, click any job, check the URL:
+#   job-boards.greenhouse.io/SLUG -> greenhouse
+#   jobs.lever.co/SLUG            -> lever
+#   jobs.ashbyhq.com/SLUG         -> ashby
+#   COMPANY.wdN.myworkdayjobs.com/SITE -> workday (paste the full careers URL)
+# (v) = slug confirmed working. Others: the first run logs any that fail.
+# ============================================================
+
+companies:
+  greenhouse:
+    # --- Europe-headquartered ---
+    - adyen              # (v) Amsterdam, payments, public + profitable
+    - celonis            # (v) Munich, process intelligence
+    - contentful         # (v) Berlin, content platform
+    - sumup              # (v) London, payments
+    - monzo              # (v) London, digital bank
+    - getyourguide       # (v) Berlin, travel tech
+    - trivago            # (v) Dusseldorf, travel tech, public
+    - doctolib           # (v) Paris, health tech
+    - gocardless         # London, payments
+    - canonical          # London, Ubuntu, fully remote, profitable
+    - realtimeboardglobal  # Miro, Amsterdam/SF
+    # --- US/Irish HQ with large European hubs and remote-friendly hiring ---
+    - gitlab             # (v) all-remote, hires across Europe
+    - intercom           # Dublin/SF
+    - stripe             # Dublin/SF
+    - datadog            # NYC/Paris, French founders
+    - mongodb            # NYC/Dublin, public
+    - cloudflare         # SF/London/Lisbon, public
+    - elastic            # Amsterdam roots, public
+    - squarespace        # NYC/Dublin
+
+    # --- North America: remote-first or remote-friendly, established ---
+    - airbnb             # work-from-anywhere policy, public
+    - pinterest          # PinFlex remote policy, public
+    - okta               # remote-friendly, public
+    - pagerduty          # remote-friendly, public
+    - sproutsocial       # Chicago, remote-friendly, public
+    - calendly           # remote-first
+    - samsara            # remote-friendly, public
+    - gusto              # remote-friendly
+    - braze              # NYC, public
+    - toast              # Boston, public
+    - klaviyo            # Boston, public, martech
+
+  lever:
+    - spotify            # Stockholm, public + profitable
+
+  ashby: []
+
+  # Big, stable, high-paying employers that hire through Workday.
+  # Searched for "content" and "editorial" roles. Mostly hybrid; remote director roles are rarer.
+  workday:
+    # --- Tech ---
+    - https://salesforce.wd12.myworkdayjobs.com/External_Career_Site
+    - https://adobe.wd5.myworkdayjobs.com/external_experienced
+    - https://workday.wd5.myworkdayjobs.com/Workday
+    - https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite
+    - https://thomsonreuters.wd5.myworkdayjobs.com/External_Career_Site
+
+    # --- Beyond tech: financial services (low churn, high pay) ---
+    - https://fmr.wd1.myworkdayjobs.com/FidelityCareers                # (v) Fidelity, big Westlake TX campus
+    - https://capgroup.wd1.myworkdayjobs.com/capitalgroupcareers       # (v) Capital Group
+    - https://mastercard.wd1.myworkdayjobs.com/CorporateCareers        # (v) Mastercard
+    - https://capitalone.wd12.myworkdayjobs.com/Capital_One            # (v) Capital One, Plano hub
+
+    # --- Beyond tech: healthcare and medtech ---
+    - https://mckesson.wd3.myworkdayjobs.com/External_Careers          # (v) McKesson, Irving TX HQ
+    - https://medtronic.wd1.myworkdayjobs.com/MedtronicCareers         # (v) Medtronic
+    - https://alcon.wd5.myworkdayjobs.com/careers_alcon                # Alcon, Fort Worth (unverified URL)
